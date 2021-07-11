@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import * as pino from 'pino';
+import { format } from 'date-fns';
 
 @Injectable()
 export class AppLoggerService {
@@ -7,6 +8,8 @@ export class AppLoggerService {
   constructor() {
     this.logger = pino({
       prettyPrint: true,
+      name: 'api',
+      timestamp: () => `"time":"${format(new Date(), 'HH:mm:ss dd.LL.yyyy')}"`,
     });
   }
   log(message: any, context?: string) {
