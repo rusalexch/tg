@@ -2,6 +2,7 @@ import { AppLoggerService } from './modules/app-logger/app-logger.service';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './modules/app.module';
 import { LoggerInterceptor } from './common/interceptors/logger.interceptor';
+import { AllExceptionsFilter } from './common/filters';
 
 async function bootstrap() {
   const logger = new AppLoggerService();
@@ -10,6 +11,7 @@ async function bootstrap() {
   });
 
   app.useGlobalInterceptors(new LoggerInterceptor(logger));
+  app.useGlobalFilters(new AllExceptionsFilter(logger));
 
   const port = process.env.PORT || 4000;
   await app.listen(port);
