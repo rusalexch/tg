@@ -1,8 +1,8 @@
 import { AppLoggerService } from './modules/app-logger/app-logger.service';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './modules/app.module';
-import { LoggerInterceptor } from './modules/common/interceptors/logger.interceptor';
-import { AllExceptionsFilter } from './modules/common/filters';
+import { LoggerInterceptor } from './common/interceptors/logger.interceptor';
+import { AllExceptionsFilter } from './common/filters';
 
 async function bootstrap() {
   const logger = new AppLoggerService();
