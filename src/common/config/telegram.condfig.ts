@@ -3,7 +3,8 @@ import { ConfigType, registerAs } from '@nestjs/config';
 
 export const telegramConfig = registerAs('telegram', () => {
   return {
-    apiKey: env.get('TELEGRAMM_API_KEY').required().asString(),
+    apiKey: env.get('TELEGRAM_API_KEY').required().asString(),
+    url: env.get('URL').required().asString(),
   };
 });
 
